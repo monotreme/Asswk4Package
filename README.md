@@ -1,3 +1,3 @@
 # Project: Fars
 
-https://travis-ci.org/monotreme/Asswk4Package.svg?branch=master
+[travis-badge]: https://img.shields.io/travis//monotreme/Asswk4Package.svg?branch=master
