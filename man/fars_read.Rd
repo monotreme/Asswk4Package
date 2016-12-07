@@ -23,7 +23,7 @@ You can customise this function to include the progress bar by editing
 the function to replace 'progress = FALSE' with 'progress= TRUE'.
 }
 \examples{
-fars_read("mydata.csv")
+fars_read("accident_2013.csv.bz2")
 
 }
 

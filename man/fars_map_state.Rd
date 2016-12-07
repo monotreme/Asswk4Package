@@ -27,8 +27,7 @@ for example, "foo", the returned string is ""accident_NA.csv.bz2"
 This function takes an integer corresponding to a state state and a year, and plots the data from the corresponding fars file.
 }
 \examples{
-fars_map_state(1,2014)
-fars_map_state(2,c(2013))
+fars_map_state(1,c(2013))
 fars_map_state("1",2015)
 fars_map_state(1,"2014")
 

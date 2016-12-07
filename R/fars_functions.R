@@ -16,14 +16,15 @@
 #' @return  A data frame containing the data contained in the file with the given filename.
 #'
 #' @examples
-#' fars_read("mydata.csv")
+#' fars_read("accident_2013.csv.bz2")
 #'
 #' @export
 fars_read <- function(filename) {
-  if(!file.exists(filename))
+  filepath = system.file("extdata", "accident_2013.csv.bz2", package="Asswk4Package")
+  if(!file.exists(filepath))
     stop("file '", filename, "' does not exist")
   data <- suppressMessages({
-    readr::read_csv(filename, progress = FALSE)
+    readr::read_csv(filepath, progress = FALSE)
   })
   dplyr::tbl_df(data)
 }
@@ -138,8 +139,7 @@ fars_summarize_years <- function(years) {
 #' for example, "foo", the returned string is ""accident_NA.csv.bz2"
 #'
 #' @examples
-#' fars_map_state(1,2014)
-#' fars_map_state(2,c(2013))
+#' fars_map_state(1,c(2013))
 #' fars_map_state("1",2015)
 #' fars_map_state(1,"2014")
 #'

@@ -3,11 +3,11 @@ Type: Package
 Title: Reads and Plots Fars data
 Version: 0.1.0
 Depends:
-    R (>= 3.0.0)
+    R (>= 3.0.0), dplyr, maps, readr, tidyr, testthat
 Imports:
 Author: monotreme
 Maintainer: monotreme <trishmorley@gmail.com>
-Description: A set of functions for reading and plotting fars data
+Description: This package contains a set of functions for reading and plotting fars data.
 License: GPL (>= 2)
 LazyData: TRUE
 URL: https://github.com/monotreme/Asswk4Package
