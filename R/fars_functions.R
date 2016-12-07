@@ -52,7 +52,6 @@ make_filename <- function(year) {
   year <- as.integer(year)
   sprintf("accident_%d.csv.bz2", year)
 }
-
 #' Read accident data from fars data files.
 #'
 #' This function reads accident data from fars data files for the years specified as an input.
@@ -77,13 +76,14 @@ make_filename <- function(year) {
 #' @importFrom dplyr mutate
 #' @importFrom dplyr select
 #' @export
+
 fars_read_years <- function(years) {
   lapply(years, function(year) {
     file <- make_filename(year)
     tryCatch({
       dat <- fars_read(file)
-      dplyr::mutate_(dat, year = ~ year) %>%
-        dplyr::select_(.dots = c("MONTH", "year"))
+      foo <- dplyr::mutate_(dat, year = ~ year)
+        dplyr::select_(foo, .dots = c("MONTH", "year"))
     }, error = function(e) {
       warning("invalid year: ", year)
       return(NULL)
@@ -101,10 +101,9 @@ fars_read_years <- function(years) {
 #' The warning message for an input of "foo" reads: 'In make_filename("foo") : NAs introduced by coercion'
 #'
 #'
-#' The function fars_summarize_years imports from packages dplyr and tidyr as follows:
+#' The function fars_summarize_years imports from packages as follows:
 #' @importFrom  dplyr bind_rows group_by summarize
 #' @importFrom tidyr spread
-#'
 #' @return dataframe
 #' For an input parameter of "1994", the returned string is "accident_1994.csv.bz2". For a non-integer input value of,
 #' for example, "foo", the returned string is ""accident_NA.csv.bz2"
@@ -115,10 +114,10 @@ fars_read_years <- function(years) {
 #' @export
 fars_summarize_years <- function(years) {
   dat_list <- fars_read_years(years)
-  dplyr::bind_rows(dat_list) %>%
-    dplyr::group_by_( ~ year, ~ MONTH) %>%
-    dplyr::summarize_(n = ~ n()) %>%
-    tidyr::spread_(key_col = 'year', value_col = 'n')
+  d1 <- dplyr::bind_rows(dat_list)
+  d2 <-  dplyr::group_by_(d1,  ~ year, ~ MONTH)
+  d3 <-  dplyr::summarize_(d2, n = ~ n())
+  tidyr::spread_(d3, key_col = 'year', value_col = 'n')
 }
 #' Plot fars accident data
 #'

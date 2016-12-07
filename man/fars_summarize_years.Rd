@@ -13,7 +13,7 @@ If the input parameter is not convertable to a string, a warning message will be
 The warning message for an input of "foo" reads: 'In make_filename("foo") : NAs introduced by coercion'
 
 
-The function fars_summarize_years imports from packages dplyr and tidyr as follows:}
+The function fars_summarize_years imports from packages as follows:}
 }
 \value{
 dataframe
