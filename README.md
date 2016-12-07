@@ -1,3 +1,4 @@
-# Project: Fars
+# Project Asswk4Package (fars) build status
 
-[travis-badge]: https://img.shields.io/travis//monotreme/Asswk4Package.svg?branch=master
+[![Build Status](https://travis-ci.org/monotreme/Asswk4Package.svg?branch=master)](https://travis-ci.org/monotreme/Asswk4Package)
+
