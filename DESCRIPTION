@@ -3,7 +3,7 @@ Type: Package
 Title: Reads and Plots Fars data
 Version: 0.1.0
 Depends:
-    R (>= 3.0.0), dplyr, maps, readr, tidyr, testthat
+    R (>= 3.0.0), dplyr, maps, readr, tidyr
 Imports:
 Author: monotreme
 Maintainer: monotreme <trishmorley@gmail.com>
