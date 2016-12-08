@@ -46,7 +46,7 @@ fars_summarize_years(years) reshapes the data ready for plotting
 ### fars_map_state(state_number, year)
 fars_map_state(state_number, year) plots the fars data for the specified state and year.
 State numbers are shown below.
-Example: fars_map_state(6,"2014") produces the following plot:
+Example: fars_map_state(6,"2014")
 
 ## State Codes
 The State codes shown below have been reproduced from the Fars analytical users manual (p. 23) found at the FARS system url shown above, and are as follows as of the time of writing:
