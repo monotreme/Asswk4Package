@@ -1,63 +1,107 @@
 ---
-title: "My Vignettee"
-author: "Monotreme"
+title: "fars, looking at that accident data"
+author: "monotreme"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{my_vignette}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown
   %\VignetteEncoding{UTF-8}
 ---
+
+## The fars system
+The Fatality Analysis Reporting System (FARS) produces accident statistics for a given year, and is available at http://www.nhtsa.gov/Data/Fatality-Analysis-Reporting-System-(FARS)
+Data can be download through links at the above site.
+
+Manuals and data documentation can be found at:
+
+   - https://crashstats.nhtsa.dot.gov/#/DocumentTypeList/4
+
+## this package
 This package contains the following functions to assist with using fars data:
-fars_read
-make_filename
-fars_summarize_years
-fars_map_state
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+- fars_read
+- make_filename
+- fars_read_years
+- fars_summarize_years
+- fars_map_state
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
 
-## Vignette Info
+### fars_read
+fars_read(filename) takes a string expected to be a filename of the form:
+  - accident_YYYY.csv.bz2
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+All going well, it returns a dataframe containing the desired data.
 
-## Styles
+### make_filename
+make_filename(year) takes a year as either an integer or a character string and forms a filename ready for fars_read to use.
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
+### fars_read_years
+fars_read_years(years) will call make_filename and fars_read to assemble the fars data for the specified years.
+The parameter years is a vector containing the years for which to read fars data.
 
-    output:
-      rmarkdown::html_vignette:
-        css: mystyles.css
+### fars_summarize_years
+fars_summarize_years(years) reshapes the data ready for plotting
 
-## Figures
+### fars_map_state(state_number, year)
+fars_map_state(state_number, year) plots the fars data for the specified state and year.
+State numbers are shown below.
+Example: fars_map_state(6,"2014") produces the following plot:
 
-The figure sizes have been customised so that you can easily put two images side-by-side.
+## State Codes
+The State codes shown below have been reproduced from the Fars analytical users manual (p. 23) found at the FARS system url shown above, and are as follows as of the time of writing:
+(from 1975 onwards)
 
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
-```
-
-You can enable figure captions by `fig_caption: yes` in YAML:
-
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
-```
-
-Also a quote using `>`:
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+ - 01 Alabama
+ - 02 Alaska
+ - 04 Arizona
+ - 05 Arkansas
+ - 06 California
+ - 08 Colorado
+ - 09 Connecticut
+ - 10 Delaware
+ - 11 District of Columbia
+ - 12 Florida
+ - 13 Georgia
+ - 15 Hawaii
+ - 16 Idaho
+ - 17 Illinois
+ - 18 Indiana
+ - 19 Iowa
+ - 20 Kansas
+ - 21 Kentucky
+ - 22 Louisiana
+ - 23 Maine
+ - 24 Maryland
+ - 25 Massachusetts
+ - 26 Michigan
+ - 27 Minnesota
+ - 28 Mississippi
+ - 29 Missouri
+ - 30 Montana
+ - 31 Nebraska
+ - 32 Nevada
+ - 33 New Hampshire
+ - 34 New Jersey
+ - 35 New Mexico
+ - 36 New York
+ - 37 North Carolina
+ - 38 North Dakota
+ - 39 Ohio
+ - 40 Oklahoma
+ - 41 Oregon
+ - 42 Pennsylvania
+ - 43 Puerto Rico
+ - 44 Rhode Island
+ - 45 South Carolina
+ - 46 South Dakota
+ - 47 Tennessee
+ - 48 Texas
+ - 49 Utah
+ - 50 Vermont
+ - 51 Virginia
+ - 52 Virgin Islands (since 2004)
+ - 53 Washington
+ - 54 West Virginia
+ - 55 Wisconsin
+ - 56 Wyoming

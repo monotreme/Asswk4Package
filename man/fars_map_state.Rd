@@ -29,7 +29,7 @@ This function takes an integer corresponding to a state state and a year, and pl
 \examples{
 fars_map_state(1,c(2013))
 fars_map_state("1",2015)
-fars_map_state(1,"2014")
+fars_map_state(6,"2014")
 
 }
 

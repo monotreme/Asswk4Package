@@ -20,7 +20,7 @@
 #'
 #' @export
 fars_read <- function(filename) {
-  filepath = system.file("extdata", "accident_2013.csv.bz2", package="Asswk4Package")
+  filepath = system.file("extdata", filename, package="Asswk4Package")
   if(!file.exists(filepath))
     stop("file '", filename, "' does not exist")
   data <- suppressMessages({
@@ -140,7 +140,7 @@ fars_summarize_years <- function(years) {
 #' @examples
 #' fars_map_state(1,c(2013))
 #' fars_map_state("1",2015)
-#' fars_map_state(1,"2014")
+#' fars_map_state(6,"2014")
 #'
 #' @importFrom  maps map
 #' @importFrom graphics points
